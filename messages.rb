@@ -1,12 +1,22 @@
 require 'faraday'
 
-conn = Faraday.new(:url => 'http://sushi.com') do |c|
-  c.use Faraday::Request::UrlEncoded  # encode request params as "www-form-urlencoded"
-  c.use Faraday::Response::Logger     # log request & response to STDOUT
-  c.use Faraday::Adapter::NetHttp     # perform requests with Net::HTTP
+response = Faraday.post do |req|
+    req.url "https://www.yammer.com/api/v1/shares"
+    req.headers["Authorization"] = "Bearer uKYjDr8GEMTqYdFTUvuYw"
+    req.params['attached_objects'] = ["page:585285"]
+    req.params['shared_with_emails'] = ["sbalentine@yammer-inc.com"]
+    req.params['body'] = "WHO"
 end
 
-response = conn.get '/nigiri/sake.json'     # GET http://sushi.com/nigiri/sake.json
-response.body
+print response.body 
 
-conn.post '/nigiri', { :name => 'Maguro' }  # POST "name=maguro" to http://sushi.com/nigiri
+# conn = Faraday.new(:url => 'http://yammer.com') do |y|
+#   y.use Faraday::Request::UrlEncoded  # encode request params as "www-form-urlencoded"
+#   y.use Faraday::Response::Logger     # log request & response to STDOUT
+#   y.use Faraday::Adapter::NetHttp     # perform requests with Net::HTTP
+# end
+
+# response = conn.get '/nigiri/sake.json'     # GET http://sushi.com/nigiri/sake.json
+# response.body
+
+# conn.post '/nigiri', { :name => 'Maguro' }  # POST "name=maguro" to http://sushi.com/nigiri
