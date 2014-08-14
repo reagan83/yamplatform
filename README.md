@@ -17,12 +17,11 @@
 
     1) Make sure you have ruby installed
     2) Startup a new file in ruby save as postmessage.rb
-    3) 
+    3) ...tbd
 
 
 
 ## other notes
-
 
     1) Auth token (cheat!):
         https://www.yammer.com/widget/sdk

@@ -1,10 +1,13 @@
 require 'faraday'
 
+BearerToken = "YOUR_TOKEN"
+SharedWithEmails = "email@email.com"
+
 response = Faraday.post do |req|
     req.url "https://www.yammer.com/api/v1/shares"
-    req.headers["Authorization"] = "Bearer uKYjDr8GEMTqYdFTUvuYw"
+    req.headers["Authorization"] = "Bearer " + BearerToken
     req.params['attached_objects'] = ["page:585285"]
-    req.params['shared_with_emails'] = ["sbalentine@yammer-inc.com"]
+    req.params['shared_with_emails'] = [SharedWithEmails]
     req.params['body'] = "WHO"
 end
 
